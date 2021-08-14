@@ -8,16 +8,22 @@
     "build:production": "npm run prestart && npm prune --production",
     "watch": "tsc --w",
     "prestart": "npm run build && func extensions install",
+    "preverbose": "npm run build && func extensions install",
     "start:host": "func start",
+    "start:host:verbose": "func start --verbose",
     "start": "npm run start:host & npm run watch",
+    "verbose": "npm run start:host:verbose & npm run watch",
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
     "lint": "tslint -c ./tslint/tslint.json --project ./tsconfig.json",
     "lint:fix": "tslint -c ./tslint/tslint.json --project ./tsconfig.json --fix",
     "lint:rebuild:rules": "tsc ./tslint/rules/underscorePrivatesRule.ts --lib \"es6\" && tsc ./tslint/rules/uppercaseStaticReadonlyRule.ts --lib \"es6\""
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "azure-storage": "^2.10.2",
     "inversify": "^5.0.1",
+    "lodash": "^4.17.21",
+    "mocha": "^9.0.3",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {

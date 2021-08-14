@@ -1,6 +1,6 @@
 export interface ILogger {
-    error(message: string): void;
-    warn(message: string): void;
-    info(message: string): void;
-    verbose(message: string): void;
+    error(message: any): void;
+    warn(message: any): void;
+    info(message: any): void;
+    verbose(message: any): void;
 }
