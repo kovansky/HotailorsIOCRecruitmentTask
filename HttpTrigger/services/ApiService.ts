@@ -1,21 +1,19 @@
 import { AxiosInstance, AxiosResponse } from "axios";
-import { Container, inject, injectable } from "inversify";
-import { ILogger } from "../../commonServices/iLogger";
+import { inject, injectable } from "inversify";
 import { COMMON_TYPES } from "../../ioc/commonTypes";
-import getContainer from "../../ioc/inversify.config";
 import { IApiService } from "./IApiService";
-import { IPokemon } from "./types/IPokemon";
+import { IType } from "./types/IType";
 
 @injectable()
-export class ApiService implements IApiService<IPokemon> {
+export class ApiService implements IApiService<IType> {
   @inject(COMMON_TYPES.AxiosInstance)
   private readonly _axios: AxiosInstance;
 
-  public async pokemon(id: number): Promise<IPokemon> {
-    const pokemon: AxiosResponse<IPokemon> = await this._axios.get<IPokemon>(
-      `/pokemon/${id}`,
+  public async type(name: string): Promise<IType> {
+    const type: AxiosResponse<IType> = await this._axios.get<IType>(
+      `/type/${name}`,
     );
 
-    return pokemon.data;
+    return type.data;
   }
 }

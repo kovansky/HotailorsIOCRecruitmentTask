@@ -8,9 +8,9 @@ import { IFunctionService } from "../HttpTrigger/services/IFunctionService";
 import { FunctionService } from "../HttpTrigger/services/FunctionService";
 import { IApiService } from "../HttpTrigger/services/IApiService";
 import { ApiService } from "../HttpTrigger/services/ApiService";
-import { IPokemon } from "../HttpTrigger/services/types/IPokemon";
 import { AxiosInstance } from "axios";
 import { getAxiosConfiguration } from "./axiosConfiguration";
+import { IType } from "../HttpTrigger/services/types/IType";
 
 const getContainer: (() => Container) = (): Container => {
   const container: Container = new Container();
@@ -25,7 +25,7 @@ const getContainer: (() => Container) = (): Container => {
     .to(FunctionService);
 
   container
-    .bind<IApiService<IPokemon>>(COMMON_TYPES.IApiService)
+    .bind<IApiService<IType>>(COMMON_TYPES.IApiService)
     .to(ApiService);
 
   container
