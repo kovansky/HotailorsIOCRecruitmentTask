@@ -9,7 +9,7 @@ import { FunctionService } from "../HttpTrigger/services/FunctionService";
 import { IApiService } from "../HttpTrigger/services/IApiService";
 import { ApiService } from "../HttpTrigger/services/ApiService";
 import { AxiosInstance } from "axios";
-import { getAxiosConfiguration } from "./axiosConfiguration";
+import { getAxiosConfiguration } from "../commonServices/axiosConfiguration";
 import { IType } from "../HttpTrigger/services/types/IType";
 
 const getContainer: (() => Container) = (): Container => {
