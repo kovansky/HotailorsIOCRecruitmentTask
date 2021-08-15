@@ -18,7 +18,18 @@ const httpTrigger: AzureFunction = async (
     IFunctionService<any>
   >(COMMON_TYPES.IFunctionService);
 
-  const response: any = await functionService.parsePokemons(req.query.id, req.query.type);
+  let response: any;
+  if (
+    req.query.id !== undefined && req.query.id.length > 0 &&
+    req.query.type !== undefined && req.query.type.length > 0
+  ) {
+    response = await functionService.parsePokemons(
+      req.query.id,
+      req.query.type,
+    );
+  } else {
+    response = { pokemons: [] };
+  }
 
   ctx.res = {
     body: response,
